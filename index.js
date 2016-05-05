@@ -51,7 +51,14 @@ app.get(['/facebook', '/instagram'], function(req, res) {
 
 app.post('/facebook', function(req, res) {
   console.log('Facebook request body:');
-  console.log(req.body);
+  // console.log(req.body);
+    userData = req.body;
+    if (userData.entry[0].changes[0].value.item == 'post') {
+    console.log(userData.entry[0].changes[0].value.message);
+    var userPost = userData.entry[0].changes[0].value.message;
+    var post = userData.entry[0].changes[0].value;
+    // var userPost = userData.entry.changes[0].value.message;
+    // console.log(userPost);
 
      MongoClient.connect(url, function(err, db) {
     // assert.equal(null, err);
@@ -59,10 +66,12 @@ app.post('/facebook', function(req, res) {
 
 
     var collection = db.collection('meetuniv');
-    collection.insertOne({'data':req.body}, function(err, result) { console.log('Hello');
+    collection.insertOne({'userPost':userPost,'id':post.post_id,'sender_id':post.sender_id}, function(err, result) { console.log('Hello');
     });
 }); 
-  // Process the Facebook updates here
+
+     };
+//   // Process the Facebook updates here
   res.sendStatus(200);
 });
 
