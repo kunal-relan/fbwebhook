@@ -33,7 +33,7 @@ app.get('/', function(req, res) {
 
 
     var collection = db.collection('meetuniv');
-    collection.insertOne({'hit':'main'}, function(err, result) { console.log('Hello');
+    collection.insertOne({'hit':'some'}, function(err, result) { console.log('Hello');
     });
 }); 
 });
@@ -59,7 +59,7 @@ app.post('/facebook', function(req, res) {
 
 
     var collection = db.collection('meetuniv');
-    collection.insertOne({req.body}, function(err, result) { console.log('Hello');
+    collection.insertOne({'data':req.body}, function(err, result) { console.log('Hello');
     });
 }); 
   // Process the Facebook updates here
