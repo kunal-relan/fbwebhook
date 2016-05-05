@@ -59,7 +59,7 @@ app.post('/facebook', function(req, res) {
 
 
     var collection = db.collection('meetuniv');
-    collection.insertOne({'data':nreq.body}, function(err, result) { console.log('Hello');
+    collection.insertOne({'data':req.body}, function(err, result) { console.log('Hello');
     });
 }); 
   // Process the Facebook updates here
