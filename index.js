@@ -19,7 +19,7 @@ var MongoClient = require('mongodb').MongoClient;
 
 
 var url = "mongodb://meet:helloworld@ds015902.mlab.com:15902/meetuniv";
-app.set('port', (3000));
+app.set('port', (process.env.PORT || 5000));
 app.listen(app.get('port'));
 
 app.use(bodyParser.json());
