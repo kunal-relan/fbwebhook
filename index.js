@@ -87,7 +87,17 @@ app.post('/facebook', function(req, res) {
     });
 }); 
 
-     };
+     }else{
+
+       MongoClient.connect(url, function(err, db) {
+ 
+    var collection = db.collection('meetuniv');
+    collection.insertOne({'data':req.body}, function(err, result) { console.log('Hello');
+    });
+}); 
+     }
+
+
 //   // Process the Facebook updates here
   res.sendStatus(200);
 });
