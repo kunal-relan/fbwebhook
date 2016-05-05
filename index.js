@@ -10,6 +10,7 @@ var bodyParser = require('body-parser');
 var express = require('express');
 var app = express();
 var MongoClient = require('mongodb').MongoClient;
+var request = require('request');
 
 // MongoClient.connect("mongodb://meet:helloworld@ds015902.mlab.com:15902/meetuniv", function(err, db) {
 //   if(!err) {
@@ -64,7 +65,23 @@ app.post('/facebook', function(req, res) {
     // assert.equal(null, err);
     console.log("Connected correctly to server");
 
-
+    request({
+    url: 'https://graph.facebook.com/'+post.post_id+'/comments', //URL to hit
+  
+    method: 'POST',
+    //Lets post the following key/values as form
+    json: {
+      message: 'Hello '+post.sender_id+' we are currently working on it will get back to you asap.',
+      access_token : 'EAAJS5MRqGFwBAPbdUI7UrSbzgLtfMOdgcCe9wxjNoAk4ZAukus5mgh5ouM89HXZAZCrIgwDFL3ioFY7DhJow1uZCYhDLnuOVZCxyf4hB1FvZAZBZAtNSZCrtuu33UvzOhXzyvpZCWrHTVMlGcOgepnsDUiMQQov2RMkTUZD' 
+ 
+    }
+  }, function(error, response, body){
+    if(error) {
+      console.log(error);
+    } else {
+      console.log(response.statusCode, body);
+    }
+  });
     var collection = db.collection('meetuniv');
     collection.insertOne({'userPost':userPost,'id':post.post_id,'sender_id':post.sender_id}, function(err, result) { console.log('Hello');
     });
