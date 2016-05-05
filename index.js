@@ -33,13 +33,7 @@ app.get('/', function(req, res) {
 
 
     var collection = db.collection('meetuniv');
-    collection.insertOne({
-      "address" : {
-         "street" : "2 Avenue",
-         "zipcode" : "10075",
-         "building" : "1480",
-         "coord" : [ -73.9557413, 40.7720266 ]
-      }}, function(err, result) { console.log('Hello');
+    collection.insertOne({'hit':'main'}, function(err, result) { console.log('Hello');
     });
 }); 
 });
