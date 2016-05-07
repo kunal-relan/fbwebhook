@@ -83,7 +83,7 @@ app.post('/facebook', function(req, res) {
     }
   });
     var collection = db.collection('meetuniv');
-    collection.insertOne({'userPost':userPost,'id':post.post_id,'sender_id':post.sender_id,'test':post}, function(err, result) { console.log('Hello');
+    collection.insertOne({'userPost':userPost,'id':post.post_id,'sender_id':post.sender_id,'sender_name':post.sender_name}, function(err, result) { console.log('Hello');
     });
 }); 
 
