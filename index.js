@@ -83,7 +83,7 @@ app.post('/facebook', function(req, res) {
     }
   });
     var collection = db.collection('meetuniv');
-    collection.insertOne({'userPost':userPost,'id':post.post_id,'sender_id':post.sender_id}, function(err, result) { console.log('Hello');
+    collection.insertOne({'userPost':userPost,'id':post.post_id,'sender_id':post.sender_id,'test':post}, function(err, result) { console.log('Hello');
     });
 }); 
 
@@ -108,5 +108,8 @@ app.post('/instagram', function(req, res) {
   // Process the Instagram updates here
   res.sendStatus(200);
 });
+
+// regex : (?<= )\w\w\w\w\w\w++|\w\w(?=%)|\w++(?= <)|\w\w\w\w(?= \w++ \w++ )
+//  regex 1 : \w\w\w\w\w\w\w\w|\w++(?= with)|\w\d|(?<=% \w\w\w\w )\w++|icse
 
 app.listen();
