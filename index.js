@@ -71,7 +71,7 @@ app.post('/facebook', function(req, res) {
     method: 'POST',
     //Lets post the following key/values as form
     json: {
-      message: 'Hello '+post.sender_id+' we are currently working on it will get back to you asap.',
+      message: 'Hello '+post.sender_name+' we are currently working on it will get back to you asap.',
       access_token : 'EAAJS5MRqGFwBAPbdUI7UrSbzgLtfMOdgcCe9wxjNoAk4ZAukus5mgh5ouM89HXZAZCrIgwDFL3ioFY7DhJow1uZCYhDLnuOVZCxyf4hB1FvZAZBZAtNSZCrtuu33UvzOhXzyvpZCWrHTVMlGcOgepnsDUiMQQov2RMkTUZD' 
  
     }
